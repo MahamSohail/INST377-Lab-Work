@@ -3,3 +3,45 @@
     - The styles in this folder's `style.css`
     - The script in script.js, which should be included via a `<script src="script.js" >` call before your closing </body> tag 
 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel='stylesheet' href='style.css'/>
+  <title>Maham Sohail Labs </title>
+</head>
+<body>
+  <div class="wrapper">
+    <header class= "header"><h1>Maham Sohail's Labs for INST377</h1> 
+    </header>
+    <div class="container"> 
+      <div class= "left_section box"> 
+        <h3>Album Names</h3>
+        <ol class="box">
+          <li>Taylor Swift Album</li>
+          <li>Ariana Grande Album</li>
+          <li>Selena Gomez Album</li>
+          <li>Doja Cat Album</li>
+          <li>Dua Lipa Album</li>
+        </ol>
+      </div>
+      <div class="box right_section">
+      <h3> Image Carousel</h3>
+      <div class="carousel">
+        <button class="prev">prev</button>
+          <div class="images slides img">
+            <div class="carousel_item visible"><img id= "slide 1" src='/Users/MahamSohail/Documents/GitHub/INST377-Lab-Work/client/lab_3/images/lana_del.gif' alt='an image of an album'/></div>
+            <div class="carousel_item hidden"><img id="slide 2" src='/Users/MahamSohail/Documents/GitHub/INST377-Lab-Work/client/lab_3/images/TaylorSwift.jpg' alt='an image of an album'/></div>
+            <div class="carousel_item hidden"><img id="slide 3" src='/Users/MahamSohail/Documents/GitHub/INST377-Lab-Work/client/lab_3/images/ArianaGrande.png' alt='an image of an album'/></div>
+            <div class="carousel_item hidden"><img id= "slide 4" src='/Users/MahamSohail/Documents/GitHub/INST377-Lab-Work/client/lab_3/images/Dua_Lipa.jpg' alt='an image of an album'/></div>
+          </div>
+          <button class="next">next</button>
+      </div>
+      <div class="box"> Album Descriptions </div>
+    </div>
+  </div>
+  <footer class="footer"><a href="https://github.com/MahamSohail/INST377-Lab-Work" target="blank" rel="noopener norefferer">UMD Github Account</a></footer>
+  <script src="script.js" ></script>
+</body>
+</html>
