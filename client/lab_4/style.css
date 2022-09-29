@@ -94,6 +94,7 @@ form {
   /* colors */
   background-color: #96b428;
   color: #4a4a4a;
+  border: dashed 4px;
 
   /* shapes */
   border-radius: 6px;
@@ -154,6 +155,7 @@ form {
   background-color: #96b428;
   font-size: 1.2rem;
   font-weight: 600;
+  border: dashed 4px;
 }
 
 .footer a {
