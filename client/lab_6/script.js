@@ -24,7 +24,7 @@ function injectHTML(list) {
   target.innerHTML = '';
   const listEl = document.createElement('ol');
   target.appendChild(listEl);
-  list.forEach((item) =>{
+  list.forEach((item) => {
     const el = document.createElement('li');
     el.innerText = item.name;
     listEl.appendChild(el);
@@ -34,6 +34,7 @@ function injectHTML(list) {
 function processRestaurants(list) {
   console.log('fired restaurants list');
   const range = [...Array(15).keys()];
+  // eslint-disable-next-line no-shadow
   const newArray = range.map((list) => {
     const index = getRandomIntInclusive(0, list.length);
     return list[index];
