@@ -11,9 +11,7 @@
     https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 */
 function getRandomIntInclusive(min, max) {
-  // eslint-disable-next-line no-param-reassign
   min = Math.ceil(min);
-  // eslint-disable-next-line no-param-reassign
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1) + min); // The maximum is inclusive and the minimum is inclusive
 }
@@ -22,6 +20,7 @@ function injectHTML(list) {
   console.log('fired injectHTML');
   const target = document.querySelector('#restaurant_list');
   target.innerHTML = '';
+
   const listEl = document.createElement('ol');
   target.appendChild(listEl);
   list.forEach((item) => {
