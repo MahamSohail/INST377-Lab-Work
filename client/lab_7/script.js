@@ -72,6 +72,10 @@ The 'data' key, which we set at line 38 in foodServiceRoutes.js, contains all 1,
     loadAnimation.classList.remove('lds-ellipsis');
     loadAnimation.classList.add('lds-ellipsis_hidden');
 
+    form.addEventListener('input', (event) => {
+      console.log(event.target.value);
+    });
+
     // And here's an eventListener! It's listening for a "submit" button specifically being clicked
     // eslint-disable-next-line max-len
     // this is a synchronous event event, because we already did our async request above, and waited for it to resolve
