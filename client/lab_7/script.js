@@ -19,14 +19,16 @@ function injectHTML(list) {
   });
 }
 
-function processRestaurants(list) {
-  console.log('fired restaurants list');
-  const range = [...Array(15).keys()];
-  const newArray = range.map((item) => {
-    const index = getRandomIntInclusive(0, list.length);
-    return list[index];
+function processRestaurants(list) {}
+
+function filterList(list, filterInputValue) {
+  return list.filter((item) => {
+    if (!item.name) { return; }
+    const lowerCaseName = item.name.toLowerCase();
+    const lowerCaseQuery = filterInputValue.toLowerCase();
+    // eslint-disable-next-line consistent-return
+    return lowerCaseName.includes(lowerCaseQuery);
   });
-  return newArray;
 }
 
 async function mainEvent() {
@@ -75,7 +77,7 @@ The 'data' key, which we set at line 38 in foodServiceRoutes.js, contains all 1,
     let currentList = [];
     form.addEventListener('input', (event) => {
       console.log(event.target.value);
-      const filteredList = filterList(arrayFromJson.data,event.target.value);
+      const filteredList = filterList(arrayFromJson.data, event.target.value);
       injectHTML(filteredList);
     });
 
