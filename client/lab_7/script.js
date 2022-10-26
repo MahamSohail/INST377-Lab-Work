@@ -23,6 +23,14 @@ function injectHTML(list) {
 }
 
 function processRestaurants(list) {
+  {
+    console.log('fired restaurants list');
+    const range = [...Array(15).keys()];
+    const newArray = range.map((item) => {
+      const index = getRandomIntInclusive(0, list.length);
+      return list[index];
+    });
+    return newArray;
 }
 
 function filterList(list, filterInputValue) {
@@ -78,6 +86,7 @@ The 'data' key, which we set at line 38 in foodServiceRoutes.js, contains all 1,
     loadAnimation.classList.add('lds-ellipsis_hidden');
 
     let currentList = [];
+
     form.addEventListener('input', (event) => {
       console.log(event.target.value);
       const filteredList = filterList(arrayFromJson.data, event.target.value);
