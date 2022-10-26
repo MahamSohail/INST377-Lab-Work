@@ -78,8 +78,8 @@ The 'data' key, which we set at line 38 in foodServiceRoutes.js, contains all 1,
 
     form.addEventListener('input', (event) => {
       console.log(event.target.value);
-      currentList = filterList(currentList, event.target.value);
-      injectHTML(currentList);
+      const newFilterList = filterList(currentList, event.target.value);
+      injectHTML(newFilterList);
     });
 
     // And here's an eventListener! It's listening for a "submit" button specifically being clicked
