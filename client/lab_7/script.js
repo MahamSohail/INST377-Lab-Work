@@ -1,10 +1,6 @@
-// eslint-disable-next-line no-unused-vars
 function getRandomIntInclusive(min, max) {
-  // eslint-disable-next-line no-param-reassign
   min = Math.ceil(min);
-  // eslint-disable-next-line no-param-reassign
   max = Math.floor(max);
-  // eslint-disable-next-line max-len
   return Math.floor(Math.random() * (max - min + 1) + min); // The maximum is inclusive and the minimum is inclusive
 }
 
@@ -30,7 +26,7 @@ function filterList(array, filterInputValue) {
     const lowerCaseName = item.name.toLowerCase();
     const lowerCaseQuery = filterInputValue.toLowerCase();
     return lowerCaseName.includes(lowerCaseQuery);
-  })
+  });
   return newArray;
 }
 
@@ -50,7 +46,6 @@ async function mainEvent() {
   submit.style.display = 'none'; // let your submit button disappear
 
   const results = await fetch('/api/foodServicePG');
-  // eslint-disable-next-line max-len
   const arrayFromJson = await results.json(); // here is where we get the data from our request as JSON
 
   /*
@@ -59,6 +54,7 @@ async function mainEvent() {
       Dot notation is preferred in JS unless you have a good reason to use brackets
 The 'data' key, which we set at line 38 in foodServiceRoutes.js, contains all 1,000 records we need
     */
+  console.log('Test PG County Set');
   console.table(arrayFromJson.data);
 
   // eslint-disable-next-line max-len
@@ -81,16 +77,15 @@ The 'data' key, which we set at line 38 in foodServiceRoutes.js, contains all 1,
 
     form.addEventListener('input', (event) => {
       console.log(event.target.value);
-      const newFilterList = filterList(currentList, event.target.value);
-      injectHTML(newFilterList);
+      currentList = filterList(currentList, event.target.value);
+      injectHTML(currentList);
     });
 
     // And here's an eventListener! It's listening for a "submit" button specifically being clicked
     // eslint-disable-next-line max-len
     // this is a synchronous event event, because we already did our async request above, and waited for it to resolve
     form.addEventListener('submit', (submitEvent) => {
-      // eslint-disable-next-line max-len
-      // This is needed to stop our page from changing to a new URL even though it heard a GET request
+    // This is needed to stop our page from changing to a new URL even though it heard a GET request
       submitEvent.preventDefault();
 
       // This constant will have the value of your 15-restaurant collection when it processes
