@@ -81,7 +81,7 @@ The 'data' key, which we set at line 38 in foodServiceRoutes.js, contains all 1,
 
     form.addEventListener('input', (event) => {
       console.log(event.target.value);
-      const newFilterList = filterList(arrayFromJson.data, event.target.value);
+      const newFilterList = filterList(currentList, event.target.value);
       injectHTML(newFilterList);
     });
 
