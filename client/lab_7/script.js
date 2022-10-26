@@ -25,14 +25,13 @@ function injectHTML(list) {
 function processRestaurants(list) {
 }
 
-function filterList(list, filterInputValue) {
-  return list.filter((item) => {
-    if (!item.name) { return; }
+function filterList(array, filterInputValue) {
+  const newArray = array.filter(() => {
     const lowerCaseName = item.name.toLowerCase();
     const lowerCaseQuery = filterInputValue.toLowerCase();
-    // eslint-disable-next-line consistent-return
     return lowerCaseName.includes(lowerCaseQuery);
-  });
+  })
+  return newArray;
 }
 
 async function mainEvent() {
@@ -82,8 +81,8 @@ The 'data' key, which we set at line 38 in foodServiceRoutes.js, contains all 1,
 
     form.addEventListener('input', (event) => {
       console.log(event.target.value);
-      const filteredList = filterList(arrayFromJson.data, event.target.value);
-      injectHTML(filteredList);
+      const newFilterList = filterList(arrayFromJson.data, event.target.value);
+      injectHTML(newFilterList);
     });
 
     // And here's an eventListener! It's listening for a "submit" button specifically being clicked
