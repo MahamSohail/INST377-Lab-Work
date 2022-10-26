@@ -26,10 +26,8 @@ function processRestaurants(list) {}
 
 function filterList(list, filterInputValue) {
   return list.filter((item) => {
-    if (!item.name) { return; }
     const lowerCaseName = item.name.toLowerCase();
     const lowerCaseQuery = filterInputValue.toLowerCase();
-    // eslint-disable-next-line consistent-return
     return lowerCaseName.includes(lowerCaseQuery);
   });
 }
