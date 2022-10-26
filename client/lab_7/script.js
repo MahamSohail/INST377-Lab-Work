@@ -92,7 +92,7 @@ The 'data' key, which we set at line 38 in foodServiceRoutes.js, contains all 1,
 
       // This constant will have the value of your 15-restaurant collection when it processes
       currentList = processRestaurants(arrayFromJson.data);
-      console.log(currentList);
+      // console.log(currentList);
       // And this function call will perform the "side effect" of injecting the HTML list for you
       injectHTML(currentList);
 
