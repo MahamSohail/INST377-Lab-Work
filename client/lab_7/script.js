@@ -86,7 +86,9 @@ The 'data' key, which we set at line 38 in foodServiceRoutes.js, contains all 1,
     // eslint-disable-next-line max-len
     // this is a synchronous event event, because we already did our async request above, and waited for it to resolve
     form.addEventListener('submit', (submitEvent) => {
-    // This is needed to stop our page from changing to a new URL even though it heard a GET request
+      const restaurantList = processRestaurants(arrayFromJson.data);
+      // This is needed to stop our page from changing to a new URL even though it heard a GET request
+      injectHTML(restaurantList);
       submitEvent.preventDefault();
 
       // This constant will have the value of your 15-restaurant collection when it processes
