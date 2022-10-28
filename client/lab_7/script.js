@@ -1,3 +1,15 @@
+/* eslint-disable max-len */
+
+/*
+  Hook this script to index.html
+  by adding `<script src="script.js">` just before your closing `</body>` tag
+*/
+
+/*
+  ## Utility Functions
+    Under this comment place any utility functions you need - like an inclusive random number selector
+    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+*/
 function getRandomIntInclusive(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -55,7 +67,7 @@ async function mainEvent() {
       Dot notation is preferred in JS unless you have a good reason to use brackets
 The 'data' key, which we set at line 38 in foodServiceRoutes.js, contains all 1,000 records we need
     */
-  console.log('Test PG County Set');
+  // console.log('Test PG County Set');
   console.table(arrayFromJson.data);
 
   // eslint-disable-next-line max-len
@@ -67,7 +79,7 @@ The 'data' key, which we set at line 38 in foodServiceRoutes.js, contains all 1,
   console.log(`${arrayFromJson.data[0].name} ${arrayFromJson.data[0].category}`);
 
   // This IF statement ensures we can't do anything if we don't have information yet
-  if (arrayFromJson.data?.length > 0) { // the question mark in this means "if this is set at all"
+  if (arrayFromJson.data?.length) {return ;} // the question mark in this means "if this is set at all"
     submit.style.display = 'block'; // let's turn the submit button back on by setting it to display as a block when we have data available
 
     // Hide Load Button
@@ -88,12 +100,11 @@ The 'data' key, which we set at line 38 in foodServiceRoutes.js, contains all 1,
     form.addEventListener('submit', (submitEvent) => {
       const restaurantList = processRestaurants(arrayFromJson.data);
       submitEvent.preventDefault();
+
       // eslint-disable-next-line max-len
       // This is needed to stop our page from changing to a new URL even though it heard a GET request
-      
-
       // This constant will have the value of your 15-restaurant collection when it processes
-      currentList = processRestaurants(arrayFromJson.data);
+      restaurantList = processRestaurants(arrayFromJson.data);
       // console.log(currentList);
       // And this function call will perform the "side effect" of injecting the HTML list for you
       injectHTML(currentList);
