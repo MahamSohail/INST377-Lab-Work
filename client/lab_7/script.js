@@ -73,7 +73,7 @@ async function mainEvent() {
     Dot notation is preferred in JS unless you have a good reason to use brackets
     The 'data' key, which we set at line 38 in foodServiceRoutes.js, contains all 1,000 records we need
   */
-  console.table(arrayFromJson.data);
+  // console.table(arrayFromJson.data);
 
   // in your browser console, try expanding this object to see what fields are available to work with
   // for example: arrayFromJson.data[0].name, etc
@@ -83,7 +83,7 @@ async function mainEvent() {
   console.log(`${arrayFromJson.data[0].name} ${arrayFromJson.data[0].category}`);
 
   // This IF statement ensures we can't do anything if we don't have information yet
-  if (arrayFromJson.data?.length > 0) { return; } // the question mark in this means "if this is set at all"
+  if (!arrayFromJson.data?.length > 0) { return; } // the question mark in this means "if this is set at all"
   submit.style.display = 'block'; // let's turn the submit button back on by setting it to display as a block when we have data available
 
   // Hide Load Button
@@ -93,7 +93,7 @@ async function mainEvent() {
   let currentList = [];
 
   form.addEventListener('input', (event) => {
-    console.log('input', event.target.value);
+    console.log(event.target.value);
     const filteredList = filterList(currentList, event.target.value);
     injectHTML(filteredList);
   });
@@ -106,7 +106,7 @@ async function mainEvent() {
 
     // This constant will have the value of your 15-restaurant collection when it processes
     currentList = processRestaurants(arrayFromJson.data);
-    // console.log(currentList);
+    console.log(currentList);
     // And this function call will perform the "side effect" of injecting the HTML list for you
     injectHTML(currentList);
 
