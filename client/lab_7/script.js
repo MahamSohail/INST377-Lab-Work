@@ -94,7 +94,7 @@ async function mainEvent() {
 
   form.addEventListener('input', (event) => {
     console.log('input', event.target.value);
-    currentList = filterList(arrayFromJson.data, event.target.value);
+    currentList = filterList(currentList, event.target.value);
     injectHTML(currentList);
   });
 
