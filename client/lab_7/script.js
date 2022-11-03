@@ -84,16 +84,17 @@ async function mainEvent() {
 
   // This IF statement ensures we can't do anything if we don't have information yet
   if (arrayFromJson.data?.length) { return; } // the question mark in this means "if this is set at all"
-  let currentList = [];
-
   submit.style.display = 'block'; // let's turn the submit button back on by setting it to display as a block when we have data available
 
   // Hide Load Button
   loadAnimation.classList.remove('lds-ellipsis');
   loadAnimation.classList.add('lds-ellipsis_hidden');
 
+  let currentList = [];
+
   form.addEventListener('input', (event) => {
     console.log('input', event.target.value);
+    currentList = filterList(arrayFromJson.data, event.target.value);
     injectHTML(currentList);
   });
 
