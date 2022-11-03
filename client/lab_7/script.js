@@ -83,7 +83,7 @@ async function mainEvent() {
   console.log(`${arrayFromJson.data[0].name} ${arrayFromJson.data[0].category}`);
 
   // This IF statement ensures we can't do anything if we don't have information yet
-  if (arrayFromJson.data?.length) { return; } // the question mark in this means "if this is set at all"
+  if (arrayFromJson.data?.length > 0) { return; } // the question mark in this means "if this is set at all"
   submit.style.display = 'block'; // let's turn the submit button back on by setting it to display as a block when we have data available
 
   // Hide Load Button
