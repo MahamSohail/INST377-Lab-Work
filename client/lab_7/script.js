@@ -45,7 +45,7 @@ function filterList(array, filterInputValue) {
     const lowerCaseName = item.name.toLowerCase();
     const lowerCaseQuery= filterInputValue.toLowerCase();
     return lowerCaseName.includes(lowerCaseQuery);
-  })
+  });
   return newArray;
 }
 
@@ -106,7 +106,7 @@ async function mainEvent() {
 
     // This constant will have the value of your 15-restaurant collection when it processes
     currentList = processRestaurants(arrayFromJson.data);
-    console.log(currentList);
+    // console.log(currentList);
     // And this function call will perform the "side effect" of injecting the HTML list for you
     injectHTML(currentList);
 
