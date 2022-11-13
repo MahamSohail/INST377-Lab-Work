@@ -272,6 +272,9 @@
     background-color: blue;/* Pick a good background colour for your hover pseudoclass */
   }
   
+/* Map Styles */ 
+#map { height: 180px; }
+
   /*
   Form Styles
   */
