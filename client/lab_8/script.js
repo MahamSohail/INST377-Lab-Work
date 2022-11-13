@@ -51,7 +51,21 @@ function filterList(array, filterInputValue) {
 
 function initMap() {
   console.log('initMap');
-  const map = L.map('map').setView([51.505, -0.09], 13);
+  const map = L.map('map').setView([38.9897, -76.9378], 13);
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  }).addTo(map);
+  return map;
+}
+
+function markerPlace(array, map) {
+  console.log('markerPlace', array);
+  const marker = L.marker([51.5, -0.09]).addTo(map);
+  array.forEach((item) => {
+    const {coordinates} = item.geocoded_column_1;
+    L.marker([coordinates[1],coordinates[0]]).addTo(map);
+  });
 }
 
 async function mainEvent() {
@@ -61,7 +75,7 @@ async function mainEvent() {
         When you're not working in a heavily-commented "learning" file, this also is more legible
         If you separate your work, when one piece is complete, you can save it and trust it
     */
-  initMap();
+  const pageMap = initMap();
   // the async keyword means we can make API requests
 
   const form = document.querySelector('.main_form'); // get your main form so you can do JS with it
@@ -101,6 +115,7 @@ async function mainEvent() {
     console.log(event.target.value);
     const filteredList = filterList(currentList, event.target.value);
     injectHTML(filteredList);
+    markerPlace(currentList, pageMap);
   });
 
   // And here's an eventListener! It's listening for a "submit" button specifically being clicked
@@ -114,6 +129,7 @@ async function mainEvent() {
     console.log(currentList);
     // And this function call will perform the "side effect" of injecting the HTML list for you
     injectHTML(currentList);
+    markerPlace(currentList, pageMap);
 
     // By separating the functions, we open the possibility of regenerating the list
     // without having to retrieve fresh data every time
