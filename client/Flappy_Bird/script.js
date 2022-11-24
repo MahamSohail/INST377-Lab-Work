@@ -1,7 +1,9 @@
 const { D, E } = require("chart.js/dist/chunks/helpers.core");
 
 document.addEventListener('DOMContentLoaded', () => {
-  const grid = document.querySelector('.grid');
+  const grid = document.querySelector('.bird');
+  const gameDisplay = document.querySelector('.game-container')
+  const ground = document.querySelector('.ground')
   const doodler = document.createElement('div');
   const doodlerLeftSpace = 50;
   let startPoint = 150
@@ -55,6 +57,17 @@ document.addEventListener('DOMContentLoaded', () => {
         platform.bottom -= 4;
         let visual = platform;
         visual.style.bottom = platform.bottom + 'px'
+
+        if (platform.bottom < 10) {
+            let firstPlatform = platforms[0].visual
+            firstPlatform.classList.remove('platform')
+            platforms.shift()
+            console.log(platforms)
+            let newPlatform = new Platform(600)
+            platforms.push(newPlatform)
+
+
+        }
       });
     }
   }
@@ -100,38 +113,59 @@ function fall(){
 function gameOver() {
     console.log('game over')
     isGameOver = true
+    while (grid.firstChild){
+        grid.removeChild(grid.firstChild)
+    }
+    grid.innerHTML = score
     clearInterval(upTimerId)
     clearInterval(downTimerId)
+    clearInterval(leftTimerId)
+    clearInterval(rightTimerId)
 }
 
 function control() {
     if (e.key === 'ArrowLeft'){
         moveLeft() 
     } else if (e.key === 'ArrowRight'){
-       // move right
+       moveRight()
     } else if (e.key === 'ArrowUp') {
-        //moveStraight
+        moveStraight()
     }
 }
 
 function moveLeft() {
+    if (isGoingRight) {
+        clearInterval(rightTimerId)
+        isGoingRight = false
+    }
     isGoingLeft = true
     leftTimerId = setInterval(function (){
         if (doodlerLeftSpace >= 0) {
             doodlerLeftSpace -=5
             doodler.style.left = doodlerLeftSpace + 'px'
         } else moveRight()
-    }, 30)
+    }, 20)
 
 function moveRight() {
+    if (ifGoingLeft){
+        clearInterval(leftTimerId)
+        isGoingLeft = false
+    }
     isGoingRight = true
     rightTimerId = setInterval(function() {
         if (doodlerLeftSpace <= 340) {
-            doodlerLeftSpace += 50
+            doodlerLeftSpace += 5
             doodler.style.left = doodlerLeftSpace + 'px'
         } else moveLeft()
-    }, 30)
+    }, 20)
 
+}
+
+function moveStraight() {
+    isGoingRight = false
+    isGoingLeft = false
+    clearInterval(rightTimerId)
+    clearInterval(leftTimerId)
 }
 
 function start() {
@@ -145,4 +179,4 @@ function start() {
 }
   start()
 
-})
+});
